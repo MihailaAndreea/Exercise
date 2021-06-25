@@ -106,6 +106,7 @@ public class Image {
         /*
         idea -> start at (x,y) go as far as possible, come back and fill in then repeat for the rest
          */
+        System.out.println("what");
         return false;
     }
 
