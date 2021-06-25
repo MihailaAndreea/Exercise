@@ -87,6 +87,7 @@ public class Image {
     private boolean isSafe(int x, int y) {
         return (x >= 0 && y >= 0 && x < matrix.length && y < matrix.length);
     }
+    private boolean isR(int x, int y, String color){return  matrix[x][y].equals(color);}
 
     private void printRegion(String[][] matrix) {
         for (String[] row : matrix)
@@ -94,20 +95,52 @@ public class Image {
     }
 
     public void fillRegion(int row, int column, String color) {
-        if (!fillRegionUtil(row, column, color)) {
+        String initialColor = matrix[row][column];
+        if (!fillRegionUtil(row, column, color, initialColor)) {
             System.out.println("something went wrong.");
             return;
         }
         printRegion(matrix);
     }
 
-    public boolean fillRegionUtil(int row, int column, String color) {
+    public boolean fillRegionUtil(int row, int column, String color, String initialColor) {
         //Region starts with 1 element - el[row][column]
         /*
         idea -> start at (x,y) go as far as possible, come back and fill in then repeat for the rest
+        stop condition->everything is filled OR all sides are a different color
          */
-        System.out.println("what is going on");
-        return false;
+        printRegion(matrix);
+        System.out.println();
+        if(isSafe(row, column))
+        {
+//            colorByPixel(row, column, color);
+            if(isR(row, column, initialColor))
+            {
+                matrix[row][column] = color;
+                fillRegionUtil(row + 1, column, color, initialColor);
+            }
+            if(isSafe(row,column) && isR(row, column, color))
+            {
+                fillRegionUtil(row, column + 1, color, initialColor);
+            }
+            if(isSafe(row,column) && isR(row, column, color))
+            {
+                fillRegionUtil(row - 1, column, color, initialColor);
+            }
+//            if(isSafe(row,column) && isR(row, column, color))
+//            {
+//                fillRegionUtil(row, column - 1, color, initialColor);
+//            }
+
+
+//            if(isR(row, column, initialColor))
+//            {
+//                matrix[row][column] = color;
+//                fillRegionUtil(row, column + 1, color, initialColor);
+//            }
+        }
+
+        return true;
     }
 
     public void write() {

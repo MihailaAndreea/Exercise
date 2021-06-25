@@ -68,6 +68,7 @@ class ImageTest {
 
     @Test
     void fillRegion() {
+//        obj.colorByPixel(5, 2, "A");
         obj.fillRegion(1,1,"J");
     }
 }
