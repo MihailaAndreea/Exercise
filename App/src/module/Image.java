@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class Image {
     private int row;
     private int column;
-    private String[][] matrix;
+    private final String[][] matrix;
 
     public int getRow() {
         return row;
@@ -106,7 +106,7 @@ public class Image {
         /*
         idea -> start at (x,y) go as far as possible, come back and fill in then repeat for the rest
          */
-        System.out.println("what");
+        System.out.println("what is going on");
         return false;
     }
 
