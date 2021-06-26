@@ -2,8 +2,6 @@ package module;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ImageTest {
 
     private final Image obj = new Image(5, 5);
@@ -41,7 +39,7 @@ class ImageTest {
     void clear() {
         obj.colorByPixel(5, 10, "J");
         obj.write();
-        obj.clear(obj);
+        obj.clear();
         System.out.println();
         obj.write();
     }
@@ -68,7 +66,26 @@ class ImageTest {
 
     @Test
     void fillRegion() {
-//        obj.colorByPixel(5, 2, "A");
-        obj.fillRegion(1,1,"J");
+        obj.colorByPixel(3, 2, "A");
+        obj.colorByPixel(2, 3, "A");
+        obj.colorByPixel(3, 4, "A");
+        obj.colorByPixel(4, 3, "A");
+        obj.fillRegion(2,2,"J");
+        obj.clear();
+        System.out.println();
+        obj.write();
+        obj.colorByPixel(2, 1, "A");
+        obj.colorByPixel(1, 2, "A");
+        obj.colorByPixel(2, 3, "A");
+        obj.colorByPixel(3, 2, "A");
+        obj.fillRegion(2,2,"J");
+        obj.clear();
+        System.out.println();
+        obj.colorVertical(1, 5, 3, "A");
+        obj.fillRegion(2,2,"J");
+        obj.clear();
+        System.out.println();
+        obj.colorHorizontal(3, 1, 5, "A");
+        obj.fillRegion(2,2,"J");
     }
 }

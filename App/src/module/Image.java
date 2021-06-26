@@ -48,7 +48,7 @@ public class Image {
                 matrix[i][j] = "O";
     }
 
-    public void clear(Image image) {
+    public void clear() {
         for (int i = 0; i < row; i++)
             for (int j = 0; j < column; j++)
                 matrix[i][j] = "O";
@@ -95,56 +95,38 @@ public class Image {
     }
 
     public void fillRegion(int row, int column, String color) {
+        row = row - 1;
+        column = column - 1;
         String initialColor = matrix[row][column];
-        if (!fillRegionUtil(row, column, color, initialColor)) {
-            System.out.println("something went wrong.");
-            return;
-        }
+        fillRegionUtil(row, column, color, initialColor);
         printRegion(matrix);
     }
 
     public boolean fillRegionUtil(int row, int column, String color, String initialColor) {
-        //Region starts with 1 element - el[row][column]
         /*
-        idea -> start at (x,y) go as far as possible, come back and fill in then repeat for the rest
-        stop condition->everything is filled OR all sides are a different color
+        idea -> start at (x,y) go down as far as possible, go to the right as far as possible,
+        repeat, then go fill the rest (left side)
          */
-        printRegion(matrix);
-        System.out.println();
+//        printRegion(matrix);
+//        System.out.println();
+        boolean filled = false;
         if(isSafe(row, column))
         {
-//            colorByPixel(row, column, color);
             if(isR(row, column, initialColor))
             {
                 matrix[row][column] = color;
-                fillRegionUtil(row + 1, column, color, initialColor);
-            }
-            if(isSafe(row,column) && isR(row, column, color))
-            {
-                fillRegionUtil(row, column + 1, color, initialColor);
-            }
-            if(isSafe(row,column) && isR(row, column, color))
-            {
-                fillRegionUtil(row - 1, column, color, initialColor);
-            }
-//            if(isSafe(row,column) && isR(row, column, color))
-//            {
-//                fillRegionUtil(row, column - 1, color, initialColor);
-//            }
+                filled = fillRegionUtil(row + 1, column, color, initialColor)
+                    ||fillRegionUtil(row, column + 1, color, initialColor)
+                    ||fillRegionUtil(row, column - 1, color, initialColor)
+                    ||fillRegionUtil(row - 1, column, color, initialColor);}
 
-
-//            if(isR(row, column, initialColor))
-//            {
-//                matrix[row][column] = color;
-//                fillRegionUtil(row, column + 1, color, initialColor);
-//            }
         }
-
-        return true;
+        return filled;
     }
 
     public void write() {
         for (String[] row : matrix)
             System.out.println(Arrays.toString(row));
+        System.out.println();
     }
 }
