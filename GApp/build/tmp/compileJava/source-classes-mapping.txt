@@ -1,0 +1,16 @@
+module/validator/ImageException.java
+ module.validator.ImageException
+module/validator/ValidatorException.java
+ module.validator.ValidatorException
+module/validator/Validator.java
+ module.validator.Validator
+module/Pixel.java
+ module.Pixel
+module/Image.java
+ module.Image
+module/validator/ImageValidator.java
+ module.validator.ImageValidator
+controller/ImageController.java
+ controller.ImageController
+MainFX.java
+ MainFX

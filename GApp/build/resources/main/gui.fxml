@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImageController" >
+    <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+        </padding>
+<!--        <Text id = "text" text = "Color the image!" textAlignment = "CENTER" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0"/>-->
+<!--        <ChoiceBox id = "field" value = "" fx:id="cakec" GridPane.columnIndex="1" GridPane.rowIndex="1">-->
+<!--            <items>-->
+<!--                <FXCollections fx:factory="observableArrayList">-->
+<!--                    <String fx:value="Pink"/>-->
+<!--                    <String fx:value="Blue"/>-->
+<!--                    <String fx:value="Purple"/>-->
+<!--                    <String fx:value="Orange"/>-->
+<!--                    <String fx:value="Yellow"/>-->
+<!--                </FXCollections>-->
+<!--            </items>-->
+<!--        </ChoiceBox>-->
+        <Text id = "text" text="Create the image." textAlignment = "CENTER" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0"/>
+        <Label id="row" text="No. of rows" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField id = "field" fx:id = "rowEl" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Label id="column" text="No. of columns" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <TextField id = "field" fx:id = "columnEl" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <Button id="button"  text = "Create image!" onAction ="#createImageHandler" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    </GridPane>
+</StackPane>
