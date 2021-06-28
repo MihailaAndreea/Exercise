@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class Image {
     private int row;
     private int column;
-    private final String[][] matrix;
+    private final Pixel[][] matrix;
 
     public int getRow() {
         return row;
@@ -29,33 +29,38 @@ public class Image {
     public Image() {
         this.row = 0;
         this.column = 0;
-        this.matrix = new String[row][column];
+        this.matrix = new Pixel[row][column];
     }
 
     public Image(int row, int column) {
         try{
-        this.row = row;
-        this.column = column;
-        this.matrix = new String[row][column];
-        new ImageValidator().validate(this);
+            this.row = row;
+            this.column = column;
+            this.matrix = new Pixel[row][column];
+            new ImageValidator().validate(this);
         }
         catch (ValidatorException e)
         {
             throw new ValidatorException(e);
         }
         for (int i = 0; i < row; i++)
+        {
             for (int j = 0; j < column; j++)
-                matrix[i][j] = "O";
+            {
+                Pixel pixel = new Pixel(i, j, "O");
+                matrix[i][j] = pixel;
+            }
+        }
     }
 
     public void clear() {
         for (int i = 0; i < row; i++)
             for (int j = 0; j < column; j++)
-                matrix[i][j] = "O";
+                matrix[i][j].setColor("O");
     }
 
     public void colorByPixel(int row, int column, String color) {
-        this.matrix[row - 1][column - 1] = color;
+        this.matrix[row - 1][column - 1].setColor(color);
     }
 
     public void colorVertical(int row1, int row2, int column, String color) {
@@ -66,7 +71,7 @@ public class Image {
         }
 
         while (row1 <= row2) {
-            matrix[row1 - 1][column - 1] = color;
+            matrix[row1 - 1][column - 1].setColor(color);
             row1++;
         }
     }
@@ -79,25 +84,25 @@ public class Image {
         }
 
         while (column1 <= column2) {
-            matrix[row - 1][column1 - 1] = color;
+            matrix[row - 1][column1 - 1].setColor(color);
             column1++;
         }
     }
 
     private boolean isSafe(int x, int y) {
-        return (x >= 0 && y >= 0 && x < matrix.length && y < matrix.length);
+        return (x >= 0 && y >= 0 && x < row && y < column);
     }
-    private boolean isR(int x, int y, String color){return  matrix[x][y].equals(color);}
+    private boolean isR(int x, int y, String color){return  matrix[x][y].getColor().equals(color);}
 
-    private void printRegion(String[][] matrix) {
-        for (String[] row : matrix)
+    private void printRegion(Pixel[][] matrix) {
+        for (Pixel[] row : matrix)
             System.out.println(Arrays.toString(row));
     }
 
     public void fillRegion(int row, int column, String color) {
         row = row - 1;
         column = column - 1;
-        String initialColor = matrix[row][column];
+        String initialColor = matrix[row][column].getColor();
         fillRegionUtil(row, column, color, initialColor);
         printRegion(matrix);
     }
@@ -114,18 +119,18 @@ public class Image {
         {
             if(isR(row, column, initialColor))
             {
-                matrix[row][column] = color;
+                matrix[row][column].setColor(color);
                 filled = fillRegionUtil(row + 1, column, color, initialColor)
-                    ||fillRegionUtil(row, column + 1, color, initialColor)
-                    ||fillRegionUtil(row, column - 1, color, initialColor)
-                    ||fillRegionUtil(row - 1, column, color, initialColor);}
+                        ||fillRegionUtil(row, column + 1, color, initialColor)
+                        ||fillRegionUtil(row, column - 1, color, initialColor)
+                        ||fillRegionUtil(row - 1, column, color, initialColor);}
 
         }
         return filled;
     }
 
     public void write() {
-        for (String[] row : matrix)
+        for (Pixel[] row : matrix)
             System.out.println(Arrays.toString(row));
         System.out.println();
     }

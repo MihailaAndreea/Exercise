@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 class ImageTest {
 
-    private final Image obj = new Image(5, 5);
+    private final Image obj = new Image(5, 6);
 
     @org.junit.jupiter.api.Test
     void validate() {
@@ -37,7 +37,7 @@ class ImageTest {
 
     @org.junit.jupiter.api.Test
     void clear() {
-        obj.colorByPixel(5, 10, "J");
+        obj.colorByPixel(5, 5, "J");
         obj.write();
         obj.clear();
         System.out.println();
@@ -46,6 +46,8 @@ class ImageTest {
 
     @org.junit.jupiter.api.Test
     void colorByPixel() {
+        obj.colorByPixel(1, 1, "A");
+        obj.write();
     }
 
     @Test
@@ -85,7 +87,7 @@ class ImageTest {
         obj.fillRegion(2,2,"J");
         obj.clear();
         System.out.println();
-        obj.colorHorizontal(3, 1, 5, "A");
+        obj.colorHorizontal(3, 1, 6, "A");
         obj.fillRegion(2,2,"J");
     }
 }

@@ -27,15 +27,36 @@ to this region.
 
 #Example:
 In the example below, > denotes input, => denotes program output.
-I 5 6
+
+I 4 6
+
 L 2 3 A
+
 S
+
 => 
-  	[ 0 0 0 0 ]
+  	
+	[ 0 0 0 0 ]
 	[ 0 0 0 0 ]
     [ 0 A 0 0 ]
 	[ 0 0 0 0 ]
 	[ 0 0 0 0 ]
 	[ 0 0 0 0 ]
+
+ F 3 3 J
+ 
+ V 2 3 4 W
+ 
+ H 3 4 2 Z
+ 
+ S
+ =>
+ 
+	[ J J J J ]
+	[ J J Z Z ]
+    [ J W J J ]
+	[ J W J J ]
+	[ J J J J ]
+	[ J J J J ]
 
 
