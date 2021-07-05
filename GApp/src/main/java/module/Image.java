@@ -26,6 +26,10 @@ public class Image {
         this.column = column;
     }
 
+    public Pixel[][] getMatrix() {
+        return matrix;
+    }
+
     public Image() {
         this.row = 0;
         this.column = 0;
@@ -90,7 +94,7 @@ public class Image {
     }
 
     private boolean isSafe(int x, int y) {
-        return (x >= 0 && y >= 0 && x < matrix.length && y < matrix.length);
+        return (x >= 0 && y >= 0 && x < row && y < column);
     }
     private boolean isR(int x, int y, String color){return  matrix[x][y].getColor().equals(color);}
 

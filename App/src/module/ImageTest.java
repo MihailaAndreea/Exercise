@@ -68,26 +68,29 @@ class ImageTest {
 
     @Test
     void fillRegion() {
-        obj.colorByPixel(3, 2, "A");
-        obj.colorByPixel(2, 3, "A");
-        obj.colorByPixel(3, 4, "A");
-        obj.colorByPixel(4, 3, "A");
-        obj.fillRegion(2,2,"J");
-        obj.clear();
-        System.out.println();
-        obj.write();
-        obj.colorByPixel(2, 1, "A");
-        obj.colorByPixel(1, 2, "A");
-        obj.colorByPixel(2, 3, "A");
-        obj.colorByPixel(3, 2, "A");
-        obj.fillRegion(2,2,"J");
-        obj.clear();
-        System.out.println();
-        obj.colorVertical(1, 5, 3, "A");
-        obj.fillRegion(2,2,"J");
-        obj.clear();
-        System.out.println();
-        obj.colorHorizontal(3, 1, 6, "A");
-        obj.fillRegion(2,2,"J");
+        obj.fillRegion(1,1,"A");
+//        obj.clear();
+//        System.out.println();
+//        obj.colorByPixel(3, 2, "A");
+//        obj.colorByPixel(2, 3, "A");
+//        obj.colorByPixel(3, 4, "A");
+//        obj.colorByPixel(4, 3, "A");
+//        obj.fillRegion(2,2,"J");
+//        obj.clear();
+//        System.out.println();
+//        obj.write();
+//        obj.colorByPixel(2, 1, "A");
+//        obj.colorByPixel(1, 2, "A");
+//        obj.colorByPixel(2, 3, "A");
+//        obj.colorByPixel(3, 2, "A");
+//        obj.fillRegion(2,2,"J");
+//        obj.clear();
+//        System.out.println();
+//        obj.colorVertical(1, 5, 3, "A");
+//        obj.fillRegion(2,2,"J");
+//        obj.clear();
+//        System.out.println();
+//        obj.colorHorizontal(3, 1, 6, "A");
+//        obj.fillRegion(2,2,"J");
     }
 }

@@ -10,6 +10,7 @@
 
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
+<?import javafx.stage.Stage?>
 <StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImageController" >
     <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
         <padding>
@@ -32,6 +33,9 @@
         <TextField id = "field" fx:id = "rowEl" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
         <Label id="column" text="No. of columns" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
         <TextField id = "field" fx:id = "columnEl" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-        <Button id="button"  text = "Create image!" onAction ="#createImageHandler" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <Button id="button"  text = "Create image!" onAction ="#createImageHandler" GridPane.columnIndex="0" GridPane.rowIndex="5">
+            <Stage fx:id="stage">
+            </Stage>
+        </Button>
     </GridPane>
 </StackPane>
